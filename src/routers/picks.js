@@ -55,7 +55,7 @@ router.post('/', async(req, res) => {
             success: true,
             message: 'Forecast created',
             data:{
-                newPick
+                pick: newPick
             }
         })
 
@@ -68,6 +68,29 @@ router.post('/', async(req, res) => {
         })
     }
     
+})
+
+router.delete('/:id', async(req, res) => {
+    try{
+        const pickDeleted = await picks.deleteById(req.params.id)
+
+        res.json({
+            success: true,
+            message: 'Forecast deleted',
+            data: {
+                pick: pickDeleted
+            }
+        })
+    } catch(err){
+        res.status(400),
+        re.json({
+            success: true,
+            message: 'Forecast deleted succesfuly',
+            error: 'error: ', err
+        })
+    }
+    
+
 })
 
 module.exports = router

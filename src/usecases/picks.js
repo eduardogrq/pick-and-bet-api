@@ -15,8 +15,13 @@ function create(pick) {
 
 }
 
+function deleteById(id) {
+    return Picks.findByIdAndDelete(id)
+}
+
 module.exports = {
     create,
     getAll,
-    findById
+    findById,
+    deleteById
 }
