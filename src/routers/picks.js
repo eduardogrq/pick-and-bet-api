@@ -21,6 +21,7 @@ router.get('/', async(req, res) => {
             success: false,
             message: 'Could not register',
             error: err.message
+            
         })
     }
 })
