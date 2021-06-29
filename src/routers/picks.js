@@ -12,7 +12,7 @@ router.get('/', async(req, res) => {
             success: true,
             message: 'all Forecast',
             data:{
-                allPicks
+                forecasts: allPicks
             }
         })
     } catch(err){
@@ -20,6 +20,28 @@ router.get('/', async(req, res) => {
         res.json({
             success: false,
             message: 'Could not register',
+            error: err.message
+        })
+    }
+})
+
+router.get('/:id', async(req, res) => {
+    try{
+        const forecastFinded = await picks.findById(req.params.id)
+
+        res.json({
+            success: true,
+            message: "forecast finded",
+            data: {
+                forecast: forecastFinded
+            }
+        })
+
+    } catch(err) {
+        res.status(400),
+        res.json({
+            success: false,
+            message: 'Could not find the forecast',
             error: err.message
         })
     }
@@ -41,7 +63,7 @@ router.post('/', async(req, res) => {
         res.status(400),
         res.json({
             success: false,
-            message: 'Could not register',
+            message: 'Could not create the forecast',
             error: err.message
         })
     }
