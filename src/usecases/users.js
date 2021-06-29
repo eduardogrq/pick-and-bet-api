@@ -38,8 +38,13 @@ async function signUp({name, lastName, phoneNumber, email, age, password, role})
 
 }
 
+function deleteById(id) {
+    return Users.findByIdAndDelete(id)
+}
+
 module.exports = {
     getAll,
     findById,
-    signUp
+    signUp,
+    deleteById
 }

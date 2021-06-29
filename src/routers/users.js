@@ -70,4 +70,24 @@ router.post('/', async(req, res) => {
 
 })
 
+router.delete('/:id', async(req, res) => {
+    try{
+        const userFinded = await users.deleteById(req.params.id)
+        res.json({
+            success: true,
+            message: 'user deleted',
+            data:{
+                koder: userFinded
+            }
+        })
+    } catch(err) {
+        res.status(400)
+        res.json({
+            success: true,
+            message: 'Error at delete user',
+            error: 'error: ', err
+        })
+    }
+})
+
 module.exports = router
