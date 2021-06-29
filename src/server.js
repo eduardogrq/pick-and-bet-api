@@ -9,7 +9,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use('/users', usersRoter)
+app.use('/', usersRoter)
 app.use('/forecasts', picksRouter)
 
 module.exports = app
