@@ -9,7 +9,7 @@ const PicksSchema = new mongoose.Schema({
 
     createdDate:{
         type: Date,
-        // default: dateMexico,
+        default: dateMexico,
         required: true
     },
     category: {

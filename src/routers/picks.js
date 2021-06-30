@@ -1,9 +1,7 @@
 
 const express = require('express')
 const picks = require('../usecases/picks')
-const moment = require('moment-timezone')
 
-const dateMexico = moment.tz(Date.now(), "America/Mexico_City")
 
 const router = express.Router()
 
@@ -55,17 +53,13 @@ router.get('/:id', async(req, res) => {
 
 router.post('/', async(req, res) => {
     try{
-        const createdDate = dateMexico
-        const {category, event, forecast} = req.body
-        const newPick = await picks.create({
-            category, event, forecast, createdDate
-        })
+        const newPick = await picks.create(req.body)
 
         res.json({
             success: true,
             message: 'Forecast created',
             data:{
-                pick: newPick.createdDate
+                pick: newPick
             }
         })
 
