@@ -1,11 +1,15 @@
 
 const mongoose = require('mongoose')
+const moment = require('moment-timezone')
+
+// Definiendo la zona horaria de méxico
+const dateMexico = moment.tz(Date.now(), "America/Mexico_City");
 
 const PicksSchema = new mongoose.Schema({
 
     createdDate:{
         type: Date,
-        default: Date.now,
+        // default: dateMexico,
         required: true
     },
     category: {
